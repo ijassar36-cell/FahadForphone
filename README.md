@@ -1,23 +1,22 @@
-# FahadForphone
-<!DOCTYPE html>
+
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>اختبار الرخصة المهنية للمعلمين العام</title>
+    <title>اختبار الرخصة المهنية - تخصص الجغرافيا</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #121212;
-            --secondary: #1e1e1e;
-            --accent: #6a11cb;
-            --accent-light: #2575fc;
-            --correct: #00c853;
-            --incorrect: #ff1744;
-            --text: #e0e0e0;
+            --primary: #0d1b2a;
+            --secondary: #1b263b;
+            --accent: #415a77;
+            --accent-light: #778da9;
+            --correct: #2ecc71;
+            --incorrect: #e74c3c;
+            --text: #e0e1dd;
             --text-light: #b0b0b0;
-            --border: #333;
-            --card-bg: #252525;
+            --border: #415a77;
+            --card-bg: #1b263b;
         }
         
         * {
@@ -28,7 +27,7 @@
         }
         
         body {
-            background: linear-gradient(135deg, var(--primary), #2c3e50);
+            background: linear-gradient(135deg, var(--primary), #1b263b);
             color: var(--text);
             line-height: 1.6;
             padding: 20px;
@@ -77,7 +76,7 @@
             margin: 0 auto 15px;
             font-size: 2rem;
             color: white;
-            box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
+            box-shadow: 0 5px 15px rgba(65, 90, 119, 0.4);
         }
         
         h1 {
@@ -97,7 +96,7 @@
         .exam-info {
             display: flex;
             justify-content: space-between;
-            background: rgba(37, 37, 37, 0.7);
+            background: rgba(27, 38, 59, 0.7);
             padding: 15px;
             border-radius: 12px;
             margin-bottom: 25px;
@@ -122,7 +121,7 @@
         }
         
         .instructions {
-            background: linear-gradient(135deg, rgba(106, 17, 203, 0.1), rgba(37, 117, 252, 0.1));
+            background: linear-gradient(135deg, rgba(65, 90, 119, 0.1), rgba(119, 141, 169, 0.1));
             padding: 20px;
             border-radius: 12px;
             margin-bottom: 25px;
@@ -199,7 +198,7 @@
         
         .option {
             padding: 15px 20px;
-            background-color: rgba(37, 37, 37, 0.7);
+            background-color: rgba(27, 38, 59, 0.7);
             border: 1px solid var(--border);
             border-radius: 10px;
             cursor: pointer;
@@ -223,7 +222,7 @@
         }
         
         .option:hover {
-            background-color: rgba(50, 50, 50, 0.7);
+            background-color: rgba(40, 55, 82, 0.7);
             transform: translateX(-5px);
         }
         
@@ -232,7 +231,7 @@
         }
         
         .option.selected.correct {
-            background-color: rgba(0, 200, 83, 0.15);
+            background-color: rgba(46, 204, 113, 0.15);
             border-color: var(--correct);
             color: var(--correct);
         }
@@ -243,7 +242,7 @@
         }
         
         .option.selected.incorrect {
-            background-color: rgba(255, 23, 68, 0.15);
+            background-color: rgba(231, 76, 60, 0.15);
             border-color: var(--incorrect);
             color: var(--incorrect);
         }
@@ -266,7 +265,7 @@
             flex-shrink: 0;
             transition: all 0.3s ease;
             color: white;
-            box-shadow: 0 4px 10px rgba(106, 17, 203, 0.3);
+            box-shadow: 0 4px 10px rgba(65, 90, 119, 0.3);
         }
         
         .option:hover .option-letter {
@@ -281,134 +280,92 @@
             background: var(--incorrect);
         }
         
-        .modal {
+        .result-modal {
             display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.85);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-            backdrop-filter: blur(5px);
+            margin-top: 20px;
             padding: 20px;
-            overflow-y: auto;
+            border-radius: 12px;
+            background-color: rgba(27, 38, 59, 0.9);
+            border: 1px solid var(--border);
+            animation: fadeIn 0.4s ease-out;
         }
         
-        .modal-content {
-            background: linear-gradient(135deg, var(--secondary), #2a2a2a);
-            padding: 25px;
-            border-radius: 20px;
-            max-width: 500px;
-            width: 100%;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-            position: relative;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            animation: modalAppear 0.4s ease-out;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-        
-        @keyframes modalAppear {
+        @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(-30px) scale(0.9);
+                transform: translateY(-10px);
             }
             to {
                 opacity: 1;
-                transform: translateY(0) scale(1);
+                transform: translateY(0);
             }
         }
         
-        .close-btn {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            font-size: 1.8rem;
-            cursor: pointer;
-            color: var(--text);
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            z-index: 10;
-        }
-        
-        .close-btn:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            transform: rotate(90deg);
-        }
-        
-        .modal-title {
+        .result-title {
             color: white;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-align: center;
-            font-size: 1.6rem;
-            padding-bottom: 15px;
+            font-size: 1.4rem;
+            padding-bottom: 10px;
             border-bottom: 1px solid var(--border);
             display: flex;
             align-items: center;
             justify-content: center;
         }
         
-        .modal-title.correct {
+        .result-title.correct {
             color: var(--correct);
         }
         
-        .modal-title.incorrect {
+        .result-title.incorrect {
             color: var(--incorrect);
         }
         
-        .modal-title i {
+        .result-title i {
             margin-left: 10px;
         }
         
         .explanation {
-            margin-top: 20px;
-            padding: 20px;
-            background-color: rgba(37, 37, 37, 0.7);
-            border-radius: 12px;
+            margin-top: 15px;
+            padding: 15px;
+            background-color: rgba(13, 27, 42, 0.7);
+            border-radius: 10px;
             line-height: 1.7;
             border-right: 4px solid var(--accent);
         }
         
         .correct-answer-box {
-            background-color: rgba(0, 200, 83, 0.15);
+            background-color: rgba(46, 204, 113, 0.15);
             border: 1px solid var(--correct);
-            border-radius: 12px;
-            padding: 20px;
-            margin-top: 20px;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
             display: flex;
             align-items: center;
-            box-shadow: 0 5px 15px rgba(0, 200, 83, 0.2);
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.2);
         }
         
         .correct-answer-box::before {
             content: "✅";
-            margin-left: 15px;
-            font-size: 1.8rem;
+            margin-left: 10px;
+            font-size: 1.5rem;
         }
         
         .incorrect-answer-box {
-            background-color: rgba(255, 23, 68, 0.15);
+            background-color: rgba(231, 76, 60, 0.15);
             border: 1px solid var(--incorrect);
-            border-radius: 12px;
-            padding: 20px;
-            margin-top: 20px;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
             display: flex;
             align-items: center;
-            box-shadow: 0 5px 15px rgba(255, 23, 68, 0.2);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.2);
         }
         
         .incorrect-answer-box::before {
             content: "❌";
-            margin-left: 15px;
-            font-size: 1.8rem;
+            margin-left: 10px;
+            font-size: 1.5rem;
         }
         
         .progress-container {
@@ -495,12 +452,12 @@
         .btn-primary {
             background: linear-gradient(135deg, var(--accent), var(--accent-light));
             color: white;
-            box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
+            box-shadow: 0 5px 15px rgba(65, 90, 119, 0.4);
         }
         
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(106, 17, 203, 0.6);
+            box-shadow: 0 8px 20px rgba(65, 90, 119, 0.6);
         }
         
         .btn-outline {
@@ -537,14 +494,12 @@
                 flex-direction: column;
             }
             
-            .modal-content {
-                padding: 20px;
-                max-width: 95%;
-                margin: 10px;
+            .result-modal {
+                padding: 15px;
             }
             
-            .modal-title {
-                font-size: 1.4rem;
+            .result-title {
+                font-size: 1.2rem;
             }
             
             .question-text {
@@ -563,18 +518,11 @@
             
             .correct-answer-box,
             .incorrect-answer-box {
-                padding: 15px;
+                padding: 12px;
             }
             
             .explanation {
-                padding: 15px;
-            }
-            
-            .close-btn {
-                top: 10px;
-                left: 10px;
-                width: 35px;
-                height: 35px;
+                padding: 12px;
             }
         }
         
@@ -605,12 +553,12 @@
                 font-size: 1.5rem;
             }
             
-            .modal-content {
-                padding: 15px;
+            .result-modal {
+                padding: 12px;
             }
             
-            .modal-title {
-                font-size: 1.3rem;
+            .result-title {
+                font-size: 1.1rem;
             }
             
             .question-text {
@@ -633,10 +581,10 @@
     <div class="container">
         <header>
             <div class="logo">
-                <i class="fas fa-graduation-cap"></i>
+                <i class="fas fa-globe-americas"></i>
             </div>
             <h1>اختبار الرخصة المهنية للمعلمين</h1>
-            <p class="subtitle">الجزء العام - اختبار تأهيلي</p>
+            <p class="subtitle">تخصص: الجغرافيا</p>
         </header>
         
         <div class="exam-info">
@@ -656,7 +604,7 @@
         
         <div class="instructions">
             <h3><i class="fas fa-info-circle"></i> تعليمات الاختبار</h3>
-            <p>يتكون الاختبار من 10 أسئلة متعددة الخيارات في المجال التربوي العام. لكل سؤال إجابة واحدة صحيحة فقط. انقر على الإجابة التي تعتقد أنها صحيحة، ثم ستظهر نافذة توضح الإجابة الصحيحة مع الشرح.</p>
+            <p>يتكون الاختبار من 10 أسئلة صعبة في تخصص الجغرافيا. لكل سؤال إجابة واحدة صحيحة فقط. انقر على الإجابة التي تعتقد أنها صحيحة، ثم ستظهر نافذة أسفل السؤال توضح الإجابة الصحيحة مع الشرح.</p>
         </div>
         
         <div class="progress-container">
@@ -683,20 +631,8 @@
         </div>
         
         <div class="footer">
-            <p>تم تصميم هذا الاختبار لمحاكاة اختبار الرخصة المهنية للمعلمين في الجزء العام</p>
+            <p>تم تصميم هذا الاختبار لمحاكاة اختبار الرخصة المهنية للمعلمين في تخصص الجغرافيا</p>
             <p>© 2023 هيئة تقويم التعليم والتدريب</p>
-        </div>
-    </div>
-    
-    <div class="modal" id="result-modal">
-        <div class="modal-content">
-            <span class="close-btn" id="close-modal">&times;</span>
-            <h3 class="modal-title" id="modal-title">
-                <i class="fas fa-check-circle"></i> إجابة صحيحة
-            </h3>
-            <div id="modal-content">
-                <!-- سيتم إضافة محتوى النافذة ديناميكيًا -->
-            </div>
         </div>
     </div>
 
@@ -704,114 +640,114 @@
         // بيانات الأسئلة مع الإجابات الصحيحة والشرح
         const questions = [
             {
-                question: "أي من النظريات التربوية التالية تؤكد على أهمية التفاعل الاجتماعي في عملية التعلم؟",
+                question: "ما هي الظاهرة الجغرافية التي تنتج عن تصادم الصفيحة العربية بالصفيحة الأوراسية وتسببت في تشكل جبال زاغروس؟",
                 options: [
-                    "النظرية السلوكية",
-                    "النظرية البنائية الاجتماعية",
-                    "النظرية الإنسانية",
-                    "النظرية المعرفية"
+                    "الانزياح القاري",
+                    "الطية المتصدعة",
+                    "الانزياح التكتوني للقارات",
+                    "الاندساس القاري"
                 ],
                 correctAnswer: 1,
-                explanation: "النظرية البنائية الاجتماعية (لـفيجوتسكي) تؤكد على أهمية التفاعل الاجتماعي في عملية التعلم، حيث يرى أن التعلم يحدث من خلال التفاعل مع الآخرين في سياق ثقافي واجتماعي. بينما تركز النظريات الأخرى على جوانب مختلفة مثل السلوك المرئي أو العمليات المعرفية الداخلية."
+                explanation: "تتشكل جبال زاغروس نتيجة لظاهرة الطية المتصدعة التي تحدث عند تصادم الصفيحة العربية بالصفيحة الأوراسية. هذه العملية التكتونية تؤدي إلى طي وتصدع القشرة الأرضية مكونة سلاسل جبلية ضخمة. تعتبر هذه المنطقة من أكثر المناطق نشاطاً زلزالياً في العالم بسبب استمرار حركة الصفائح."
             },
             {
-                question: "ما المبدأ الأساسي الذي تقوم عليه استراتيجية التعلم التعاوني؟",
+                question: "أي من العوامل التالية يلعب الدور الأكبر في تشكيل المناخ الصحراوي الحار في شبه الجزيرة العربية؟",
                 options: [
-                    "تنافس الطلاب للحصول على أعلى الدرجات",
-                    "اعتماد الطالب على نفسه في اكتساب المعرفة",
-                    "تعاون الطلاب في مجموعات صغيرة لتحقيق هدف مشترك",
-                    "تركيز العملية التعليمية على المعلم فقط"
+                    "التيارات المحيطية الباردة",
+                    "ظاهرة الظل المطري",
+                    "الموقع ضمن نطاق الضغط المرتفع شبه المداري",
+                    "قرب المنطقة من خط الاستواء"
                 ],
                 correctAnswer: 2,
-                explanation: "التعلم التعاوني هو استراتيجية تعليمية تعتمد على تقسيم الطلاب إلى مجموعات صغيرة غير متجانسة، يعملون معًا لتحقيق هدف مشترك، حيث يعتمد نجاح كل فرد على نجاح المجموعة ككل. وهذا يعزز المسؤولية الفردية والجماعية وينمي مهارات العمل الجماعي."
+                explanation: "الموقع ضمن نطاق الضغط المرتفع شبه المداري هو العامل الرئيسي في تشكيل المناخ الصحراوي الحار في شبه الجزيرة العربية. تسبب هذه الخلايا ذات الضغط المرتفع هبوط الكتل الهوائية واحتباس الرطوبة، مما يمنع تكون السحب وهطول الأمطار. هذا النطاق يقع بين خطي عرض 20-30 درجة شمال وجنوب خط الاستواء."
             },
             {
-                question: "أي من المهارات التالية تعتبر من مهارات التفكير العليا وفق تصنيف بلوم؟",
+                question: "ما هو المفهوم الجغرافي الذي يصف التباين في توزيع الموارد المائية بين دول حوض النيل؟",
                 options: [
-                    "الحفظ والتذكر",
-                    "الفهم والاستيعاب",
-                    "التحليل والتركيب",
-                    "التطبيق الآلي"
+                    "الجيوبوليتيكا المائية",
+                    "الصراع المائي الإقليمي",
+                    "الهيدروبوليتيك",
+                    "الجيوهيدرولوجيا"
                 ],
                 correctAnswer: 2,
-                explanation: "تصنيف بلوم للمجال المعرفي يتضمن ستة مستويات: التذكر، الفهم، التطبيق، التحليل، التركيب، التقويم. تعتبر مستويات التحليل والتركيب والتقويم من مهارات التفكير العليا، بينما التذكر والفهم والتطبيق الآلي تعتبر من مهارات التفكير الدنيا."
+                explanation: "مفهوم الهيدروبوليتيك يصف دراسة العلاقات السياسية والاستراتيجية المرتبطة بالموارد المائية المشتركة بين الدول. في حالة حوض النيل، يتجلى هذا المفهوم في التفاوض حول توزيع حصص المياه بين الدول المشاطئة، والتأثير على الأمن المائي والسياسات الإقليمية."
             },
             {
-                question: "ما المقصود بالتقويم البنائي في العملية التعليمية؟",
+                question: "أي من النماذج التالية يصف بدقة عملية التحضر في الدول النامية خلال القرن الحادي والعشرين؟",
                 options: [
-                    "التقويم الذي يتم في نهاية الوحدة الدراسية",
-                    "التقويم الذي يهدف إلى تحسين التعلم أثناء حدوثه",
-                    "التقويم الذي يقارن أداء الطالب بزملائه",
-                    "التقويم الذي يعتمد على الاختبارات الموحدة فقط"
+                    "نموذج التحضر المعتدل",
+                    "نموذج المدينة العالمية",
+                    "نموذج التحضر السريع غير المخطط",
+                    "نموذج المدينة المستدامة"
+                ],
+                correctAnswer: 2,
+                explanation: "نموذج التحضر السريع غير المخطط يصف بدقة عملية التحضر في معظم الدول النامية، حيث يؤدي النمو السكاني والهجرة من الريف إلى المدن إلى توسع حضري سريع وغير منظم. هذا النموذج يتسم بتكون الأحياء العشوائية، وعدم كفاية البنية التحتية، والضغط على الخدمات العامة."
+            },
+            {
+                question: "ما هي الآلية الرئيسية التي تساهم في تفاقم مشكلة التصحر في منطقة الساحل الأفريقي؟",
+                options: [
+                    "الرعي الجائر وتدهور الغطاء النباتي",
+                    "الأنشطة البركانية المتكررة",
+                    "زيادة ملوحة التربة بسبب ارتفاع منسوب البحر",
+                    "التغير في مسار التيارات المحيطية"
+                ],
+                correctAnswer: 0,
+                explanation: "الرعي الجائر وتدهور الغطاء النباتي هما الآليتان الرئيسيتان المسببان لتفاقم التصحر في منطقة الساحل الأفريقي. يؤدي الرعي المكثف إلى إزالة الغطاء النباتي الذي يحمي التربة من التعرية، كما أن قطع الأشجار للحصول على الوقود يسرع من عملية التصحر. هذه العوامل البشرية تفاقم تأثير التغيرات المناخية الطبيعية."
+            },
+            {
+                question: "أي من النظريات التالية تقدم التفسير الأكثر شمولية لظاهرة الاحتباس الحراري وتأثيراته على المنظومات الجغرافية؟",
+                options: [
+                    "نظرية التغير المناخي الدوري",
+                    "نظرية الانزياح المداري",
+                    "نظرية تأثير البيت الزجاجي المعزز",
+                    "نظرية التباين الشمسي"
+                ],
+                correctAnswer: 2,
+                explanation: "نظرية تأثير البيت الزجاجي المعزز تقدم التفسير الأكثر شمولية لظاهرة الاحتباس الحراري. تشرح هذه النظرية كيف تؤدي زيادة تركيز غازات الدفيئة (مثل ثاني أكسيد الكربون والميثان) في الغلاف الجوي إلى احتباس المزيد من الحرارة المنبعثة من الأرض، مما يتسبب في ارتفاع درجة حرارة الكوكب وتغير المنظومات الجغرافية المختلفة."
+            },
+            {
+                question: "ما هو المفهوم الجغرافي الذي يصف تحول الأراضي الزراعية إلى استخدامات حضرية على أطراف المدن؟",
+                options: [
+                    "التوسع الحضري الدائري",
+                    "زحف الضواحي",
+                    "الانتشار العمراني",
+                    "تآكل الحزام الأخضر"
+                ],
+                correctAnswer: 2,
+                explanation: "الانتشار العمراني هو المفهوم الجغرافي الذي يصف تحول الأراضي الزراعية والطبيعية إلى استخدامات حضرية على أطراف المدن. هذه الظاهرة تؤدي إلى فقدان الأراضي الخصبة، وزيادة الاعتماد على وسائل النقل، وتشكل تحديات بيئية واقتصادية واجتماعية للمناطق الحضرية."
+            },
+            {
+                question: "أي من العوامل التالية كان الأكثر تأثيراً في تشكيل شبكة النقل في شبه الجزيرة العربية؟",
+                options: [
+                    "التضاريس الجبلية",
+                    "توزيع الواحات ومصادر المياه",
+                    "المراكز السكانية والتجارية التاريخية",
+                    "الحدود السياسية بين الدول"
                 ],
                 correctAnswer: 1,
-                explanation: "التقويم البنائي (التكويني) هو ذلك النوع من التقويم الذي يحدث أثناء عملية التعلم، ويهدف إلى تحسين التعلم والتعليم من خلال تزويد المعلم والطالب بالتغذية الراجعة الفورية. يساعد في تحديد نقاط القوة والضعف واتخاذ القرارات المناسبة لتحسين الأداء."
+                explanation: "توزيع الواحات ومصادر المياه هو العامل الأكثر تأثيراً في تشكيل شبكة النقل التقليدية في شبه الجزيرة العربية. حيث كانت القوافل التجارية والمسافرين يتبعون المسارات التي توفر مصادر مائية، مما شكل شبكة طرق تربط بين الواحات. هذا العامل الطبيعي كان حاسماً في بيئة صحراوية قاسية."
             },
             {
-                question: "أي من الاستراتيجيات التالية تعتبر الأكثر فعالية في تعليم الطلاب ذوي صعوبات التعلم؟",
+                question: "ما هو النظام البيئي الأكثر تأثراً بارتفاع منسوب مياه البحر نتيجة لذوبان الجليد القطبي؟",
                 options: [
-                    "التدريس الجماعي لجميع الطلاب بنفس الطريقة",
-                    "استخدام طريقة واحدة ثابتة في التدريس",
-                    "التدريس المباشر والمنظم مع توفير الدعم",
-                    "التركيز على الحفظ والتكرار فقط"
-                ],
-                correctAnswer: 2,
-                explanation: "التدريس المباشر والمنظم مع توفير الدعم هو الأكثر فعالية لذوي صعوبات التعلم، حيث يتضمن تقديم المعلومة بشكل واضح ومنظم، وتجزئة المهام إلى خطوات صغيرة، وتوفير التغذية الراجعة المستمرة، واستخدام الوسائل البصرية والسمعية، وتكيف طرق التدريس حسب احتياجات كل طالب."
-            },
-            {
-                question: "ما الهدف الرئيسي من استخدام المناقشة الصفية كاستراتيجية تعليمية؟",
-                options: [
-                    "ملء وقت الحصة الدراسية",
-                    "تقليل عبء العمل على المعلم",
-                    "تنمية مهارات التفكير الناقد والتعبير لدى الطلاب",
-                    "التركيز على حفظ المعلومات فقط"
-                ],
-                correctAnswer: 2,
-                explanation: "المناقشة الصفية كاستراتيجية تعليمية تهدف primarily إلى تنمية مهارات التفكير الناقد والتعبير الشفوي لدى الطلاب، حيث تتيح لهم تبادل الآراء والأفكار، والاستماع لوجهات نظر مختلفة، وتدربهم على احترام الرأي الآخر، وتطوير حججهم logically، والتعبير عن أفكارهم بوضوح."
-            },
-            {
-                question: "أي من العوامل التالية يعتبر الأكثر تأثيراً في تحقيق التعلم الفعال؟",
-                options: [
-                    "تزيين الفصل الدراسي بشكل جذاب",
-                    "استخدام أحدث التقنيات التعليمية",
-                    "جودة التدريس وملاءمة طرق التعليم لاحتياجات الطلاب",
-                    "حجم الفصل الدراسي"
-                ],
-                correctAnswer: 2,
-                explanation: "تشير الدراسات التربوية إلى أن جودة التدريس وملاءمة طرق التعليم لاحتياجات الطلاب هي العامل الأكثر تأثيراً في تحقيق التعلم الفعال. فالمعلم الكفؤ القادر على تصميم خبرات تعليمية مناسبة وتقديم الدعم المناسب هو المحدد الرئيسي لنجاح العملية التعليمية، أكثر من العوامل المادية أو التكنولوجية."
-            },
-            {
-                question: "ما المقصود بالمنهج الخفي في العملية التعليمية؟",
-                options: [
-                    "المنهج الذي يتم تدريسه خارج أوقات الدوام الرسمي",
-                    "القيم والاتجاهات التي يكتسبها الطلاب من خلال البيئة المدرسية",
-                    "المنهج الذي يركز على المواد السرية والخاصة",
-                    "المنهج الذي لا يتم تقويمه بشكل رسمي"
+                    "الغابات الاستوائية المطيرة",
+                    "المناطق الساحلية والأراضي الرطبة",
+                    "المناطق الجبلية المرتفعة",
+                    "السهول العشبية المعتدلة"
                 ],
                 correctAnswer: 1,
-                explanation: "المنهج الخفي يشير إلى القيم والاتجاهات والمعايير الاجتماعية والسلوكيات التي يكتسبها الطلاب من خلال البيئة المدرسية والتفاعلات اليومية، دون أن تكون مخططة بشكل رسمي في المنهج الدراسي. يتضمن ذلك علاقات المعلمين بالطلاب، وقواعد المدرسة، والأنشطة غير الصفية، والثقافة المدرسية السائدة."
+                explanation: "المناطق الساحلية والأراضي الرطبة هي النظم البيئية الأكثر تأثراً بارتفاع منسوب مياه البحر. يؤدي هذا الارتفاع إلى تآكل السواحل، وتملح المياه الجوفية، وغمر المناطق المنخفضة، وفقدان الموائل الساحلية الهامة مثل أشجار المانغروف والأراضي الرطبة التي تعتبر حاضنات للعديد من الأنواع البحرية."
             },
             {
-                question: "أي من المبادئ التالية يعتبر أساسياً في تصميم الأنشطة الصفية لتنمية الإبداع؟",
+                question: "أي من النماذج التالية يصف بدقة العلاقة بين التنمية الاقتصادية والضغوط البيئية في الدول النامية؟",
                 options: [
-                    "تحديد إجابة واحدة صحيحة لكل سؤال",
-                    "توفير بيئة آمنة تشجع على التجريب وتحمل المخاطرة",
-                    "التركيز على الحلول التقليدية والمثبتة",
-                    "تقييم الطلاب بناءً على سرعة إنجاز المهمة فقط"
+                    "منحنى كوزنتس البيئي",
+                    "نموذج التحول الديموغرافي",
+                    "نظرية التبعية الهيكلية",
+                    "نموذج المركز والهامش"
                 ],
-                correctAnswer: 1,
-                explanation: "لتنمية الإبداع لدى الطلاب، من الأساسي توفير بيئة آمنة تشجع على التجريب وتحمل المخاطرة، حيث يشعر الطلاب بالأمان للتعبير عن أفكارهم غير التقليدية وتجربة حلول جديدة دون خوف من الفشل أو النقد. كما يجب تشجيع التساؤل والاستكشاف وتقبل الأخطاء كجزء من عملية التعلم."
-            },
-            {
-                question: "ما الدور الأساسي للمعلم في ظل نموذج التعلم المتمركز حول الطالب؟",
-                options: [
-                    "مصدر وحيد للمعرفة وناقل للمعلومات",
-                    "ميسر وموجه لعملية التعلم",
-                    "مسيطر على جميع أنشطة الصف",
-                    "مراقب فقط لأداء الطلاب"
-                ],
-                correctAnswer: 1,
-                explanation: "في نموذج التعلم المتمركز حول الطالب، يتحول دور المعلم من being مصدر وحيد للمعرفة إلى being ميسر وموجه لعملية التعلم. حيث يقوم بتصميم بيئات تعلم غنية، وتقديم التوجيه والدعم، وتشجيع الاستقصاء والتفكير الناقد، وتسهيل عملية بناء المعرفة من قبل الطلاب أنفسهم."
+                correctAnswer: 0,
+                explanation: "منحنى كوزنتس البيئي يصف العلاقة بين التنمية الاقتصادية والضغوط البيئية، حيث تزداد التدهورات البيئية في المراحل الأولى للتنمية الاقتصادية، ثم تبدأ في الانخفاض بعد بلوغ مستوى معين من الدخل الفردي. هذا النموذج يفسر لماذا تواجه الدول النامية تحديات بيئية كبيرة خلال مسيرة تنميتها الاقتصادية."
             }
         ];
 
@@ -853,6 +789,9 @@
                             </div>
                         `).join('')}
                     </div>
+                    <div class="result-modal" id="result-modal-${index}">
+                        <!-- سيتم إضافة محتوى النافذة ديناميكيًا -->
+                    </div>
                 `;
                 
                 questionsContainer.appendChild(questionElement);
@@ -861,9 +800,7 @@
 
         // دالة لعرض النافذة المنبثقة مع نتيجة السؤال
         function showResultModal(questionIndex, selectedOptionIndex, isCorrect) {
-            const modal = document.getElementById('result-modal');
-            const modalTitle = document.getElementById('modal-title');
-            const modalContent = document.getElementById('modal-content');
+            const modal = document.getElementById(`result-modal-${questionIndex}`);
             const question = questions[questionIndex];
             
             // العثور على الإجابة الصحيحة بعد الخلط
@@ -871,18 +808,22 @@
             const correctOptionIndex = shuffledOptions.indexOf(question.options[question.correctAnswer]);
             const correctAnswerText = shuffledOptions[correctOptionIndex];
             
+            let content = '';
+            
             // تحديث عنوان النافذة
             if (isCorrect) {
-                modalTitle.innerHTML = '<i class="fas fa-check-circle"></i> إجابة صحيحة';
-                modalTitle.className = 'modal-title correct';
+                content += `
+                    <div class="result-title correct">
+                        <i class="fas fa-check-circle"></i> إجابة صحيحة
+                    </div>
+                `;
             } else {
-                modalTitle.innerHTML = '<i class="fas fa-times-circle"></i> إجابة خاطئة';
-                modalTitle.className = 'modal-title incorrect';
+                content += `
+                    <div class="result-title incorrect">
+                        <i class="fas fa-times-circle"></i> إجابة خاطئة
+                    </div>
+                `;
             }
-            
-            let content = `
-                <div class="question-text">${question.question}</div>
-            `;
             
             // عرض الإجابة الصحيحة فقط
             if (isCorrect) {
@@ -909,11 +850,8 @@
                 </div>
             `;
             
-            modalContent.innerHTML = content;
-            modal.style.display = 'flex';
-            
-            // منع التمرير في الخلفية عند فتح النافذة
-            document.body.style.overflow = 'hidden';
+            modal.innerHTML = content;
+            modal.style.display = 'block';
         }
 
         // دالة لتحديث شريط التقدم
@@ -938,13 +876,6 @@
             const score = calculateScore();
             const percentage = (score / questions.length) * 100;
             
-            const modal = document.getElementById('result-modal');
-            const modalTitle = document.getElementById('modal-title');
-            const modalContent = document.getElementById('modal-content');
-            
-            modalTitle.innerHTML = '<i class="fas fa-chart-line"></i> نتيجة الاختبار';
-            modalTitle.className = 'modal-title';
-            
             let resultClass = 'incorrect';
             let resultMessage = 'نحتاج إلى المزيد من التحضير';
             
@@ -955,26 +886,26 @@
                 resultMessage = 'جيد ولكن تحتاج إلى تحسين';
             }
             
-            modalContent.innerHTML = `
-                <div style="text-align: center; padding: 20px;">
-                    <div style="font-size: 3rem; margin-bottom: 20px; color: ${percentage >= 75 ? 'var(--correct)' : 'var(--incorrect)'}">${percentage}%</div>
-                    <div style="font-size: 1.5rem; margin-bottom: 15px;">${resultMessage}</div>
-                    <div style="margin-bottom: 20px;">الإجابات الصحيحة: ${score} من ${questions.length}</div>
-                    <div class="action-buttons">
-                        <button class="btn btn-primary" id="review-btn">
-                            <i class="fas fa-eye"></i> مراجعة الإجابات
-                        </button>
+            // إنشاء نافذة النتيجة النهائية
+            const finalResultModal = document.createElement('div');
+            finalResultModal.className = 'question';
+            finalResultModal.innerHTML = `
+                <div class="result-modal" style="display: block;">
+                    <div class="result-title ${resultClass}">
+                        <i class="fas fa-chart-line"></i> نتيجة الاختبار
+                    </div>
+                    <div style="text-align: center; padding: 20px;">
+                        <div style="font-size: 3rem; margin-bottom: 20px; color: ${percentage >= 75 ? 'var(--correct)' : 'var(--incorrect)'}">${percentage}%</div>
+                        <div style="font-size: 1.5rem; margin-bottom: 15px;">${resultMessage}</div>
+                        <div style="margin-bottom: 20px;">الإجابات الصحيحة: ${score} من ${questions.length}</div>
                     </div>
                 </div>
             `;
             
-            modal.style.display = 'flex';
+            document.getElementById('questions-container').appendChild(finalResultModal);
             
-            // إضافة مستمع حدث لزر المراجعة
-            document.getElementById('review-btn').addEventListener('click', function() {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            });
+            // التمرير إلى النتيجة
+            finalResultModal.scrollIntoView({ behavior: 'smooth' });
         }
 
         // تهيئة الصفحة عند التحميل
@@ -1001,24 +932,12 @@
                     // عرض النافذة المنبثقة
                     showResultModal(questionIndex, optionIndex, isCorrect);
                     
+                    // التمرير إلى النافذة المنبثقة
+                    document.getElementById(`result-modal-${questionIndex}`).scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    
                     // تحديث شريط التقدم
                     updateProgress();
                 });
-            });
-            
-            // إضافة مستمع حدث لإغلاق النافذة المنبثقة
-            document.getElementById('close-modal').addEventListener('click', function() {
-                document.getElementById('result-modal').style.display = 'none';
-                document.body.style.overflow = 'auto';
-            });
-            
-            // إغلاق النافذة عند النقر خارجها
-            window.addEventListener('click', function(event) {
-                const modal = document.getElementById('result-modal');
-                if (event.target === modal) {
-                    modal.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                }
             });
             
             // زر إنهاء الاختبار
